@@ -26,8 +26,11 @@ int main(){
     int n, k;
     cin >> k >> n;
     vector<int> a;
-    for(int i = 0; i < n; i++)
-        cin >> a[i];
+    for(int i = 0; i < n; i++){
+        int temp;
+        cin >> temp;
+        a.push_back(temp);
+    }
     sort(a.begin(), a.end());
     if(n%2 == 0){
         int ind = (n/2 - k - 1);
