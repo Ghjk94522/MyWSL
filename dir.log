@@ -1,8 +1,11 @@
 .
 ├── advanced_pog
 │   ├── experiment
-│   │   ├── retro_snake.cpp
-│   │   └── retro_snake.h
+│   │   ├── E1
+│   │   │   ├── retro_snake.cpp
+│   │   │   ├── retro_snake.h
+│   │   │   └── WU_FILE_0.pdf
+│   │   └── requirement.md
 │   ├── homework
 │   │   ├── L1
 │   │   │   └── hw_1.cpp
@@ -19,6 +22,12 @@
 │   │   ├── E1
 │   │   │   ├── oj_1.cpp
 │   │   │   └── test
+│   │   ├── E2
+│   │   │   ├── Oj_2_2.cpp
+│   │   │   ├── Oj_2_2.h
+│   │   │   ├── Oj_2.cpp
+│   │   │   ├── Oj_2.h
+│   │   │   └── test
 │   │   ├── oj_0.cpp
 │   │   └── oj_0.h
 │   ├── readme.md
@@ -30,4 +39,4 @@
 ├── dir.log
 └── README.md
 
-9 directories, 21 files
+11 directories, 28 files
