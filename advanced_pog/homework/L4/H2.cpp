@@ -31,11 +31,23 @@ public:
             exit(-1);
         }
     }
+    void swap(int x, int y){
+        x ^= y;
+        y ^= x;
+        x ^= y;
+    }
+    void swap(Date& x, Date& y){
+        swap(x.year, y.year);
+        swap(x.month, y.month);
+        swap(x.day, y.day);
+    }
     Date& operator ++ ();
     const Date operator ++(int);
     Date& operator -- ();
     const Date operator --(int);
     const Date operator - (int x);
+    const Date operator + (int x);
+    int operator - (Date d);
 };
 
 void Date:: output(string s = ""){
@@ -240,11 +252,69 @@ const Date Date:: operator --(int){
     }
 }
 
-const Date Date::operator - (int x){
+const Date Date:: operator - (int x){
     Date temp = *this;
     temp.day -= x;
     if(x >= 1) return temp;
-    else{
-        
+    // when day <= 0
+    while(temp.day <= 0){
+        temp.month--;
+        int t = temp.year;
+        if(temp.month = 0){
+            temp.month = 12;
+            temp.year--;
+            t--;
+        }
+        temp.day = temp.day + ((t % 4 == 0 && t % 100 != 0) ? lm[temp.month] : nm[temp.month]);
     }
+    return temp;
+}
+
+const Date Date:: operator + (int x){
+    Date temp = *this;
+    temp.day += x;
+    int t = temp.year;
+    if(t % 4 == 0 && t % 100 != 0){
+        // the condition : leap year
+        if(temp.day <= lm[temp.month]) return temp;
+        while(temp.day > lm[temp.month]){
+            temp.day -= lm[temp.month];
+            temp.month++;
+            if(temp.month == 13){
+                temp.month = 1;
+                temp.year++;
+            }
+        }
+        return temp;
+    }
+    else{
+        // the condition : normal year
+        if(temp.day <= nm[temp.month]) return temp;
+        while(temp.day > nm[temp.month]){
+            temp.day-= nm[temp.month];
+            temp.month++;
+            if(temp.month == 13){
+                temp.month = 1;
+                temp.year++;
+            }
+        }
+        return temp;
+    }
+}
+
+int Date:: operator - (Date d){
+    // make sure the *this >= d
+    if(year < d.year){
+        swap(*this, d);
+    }
+    else if(month < d.month){
+        swap(*this, d);
+    }
+    else if(day < d.day){
+        swap(*this, d);
+    }
+
+    // calculate the year pay attention to leap year
+    int res = 0;
+    
 }

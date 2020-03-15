@@ -3,7 +3,6 @@
 using namespace std;
 
 int judgeStringType(char *s1,char *s2){
-    //TODO
     string ss = s1;
     string sd = s2;
     if(ss.length() != sd.length()) return 1;
