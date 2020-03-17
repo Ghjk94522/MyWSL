@@ -1,4 +1,5 @@
 #include<bits/stdc++.h>
+#define FOR_TEST
 using namespace std;
 
 const int lm[13] = {0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
@@ -302,19 +303,97 @@ const Date Date:: operator + (int x){
     }
 }
 
-int Date:: operator - (Date d){
-    // make sure the *this >= d
+int Date:: operator - (const Date x){
+    Date t = *this, d = x;
+    // make sure the t >= d
     if(year < d.year){
-        swap(*this, d);
+        swap(t, d);
     }
     else if(month < d.month){
-        swap(*this, d);
+        swap(t, d);
     }
     else if(day < d.day){
-        swap(*this, d);
+        swap(t, d);
     }
+
+    // check if the year is the leap year
+    // if leap year flag -> 1 else 0
+    int flag = 0;
+    if(t.year % 4 == 0 && t.year % 100 != 0) flag = 1;
 
     // calculate the year pay attention to leap year
     int res = 0;
-    
+    if(t.year == d.year) res += 0;
+    else{
+        // condition : t.year > d.year
+
+        // process the day
+        if(t.day >= d.day) res += (t.day - d.day);
+        else{
+            // condition : t.year > d.year but t.day < d.day
+            t.month--;
+            if(t.month == 0){
+                t.year--;
+                t.month = 1;
+            }
+            if(flag == 1)
+                // condition : leap year
+                t.day += lm[t.month];
+            else 
+                // condition : normal year
+                t.day += nm[t.month];
+            res += (t.day - d.day);
+            // t.day -= d.day;
+        }
+
+        // process the month
+        if(t.month >= d.month){
+            if(flag == 1){
+                // condition : leap year
+                while(t.month > d.month){
+                    res += lm[d.month];
+                    d.month++;
+                }
+            }
+            else{
+                // condition : normal year
+                while(t.month > d.month){
+                    if(d.month > 12) res += nm[d.month%13 + 1];
+                    else res += nm[d.month];
+                    d.month++;
+                }
+            }
+        }
+        else{
+            // condition : t.month < d.month
+            t.year--;
+            t.month += 12;
+
+        }
+    }
+    // condition : t.year = d.year and check month and day
+    if(t.month == d.month) res += 0;
+    else{
+        // condiotion : t.year = d.year but t.month > d.month
+
+    }
+    // condition : t.month = d.month and check day
+    if(t.day == d.month) res += 0;
+    else{
+        // condition : only t.day > d.day
+
+    }
+    return res;
 }
+
+
+#ifdef FOR_TEST
+
+int main(){
+    // test all the overload operator and try to test 
+    // the most conditions here
+
+
+}
+
+#endif
