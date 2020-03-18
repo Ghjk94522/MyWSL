@@ -311,10 +311,10 @@ int Date:: operator - (const Date x){
     if(year < d.year){
         swap(t, d);
     }
-    else if(month < d.month){
+    else if(year == d.year && month < d.month){
         swap(t, d);
     }
-    else if(day < d.day){
+    else if(year == d.year && month == d.month && day < d.day){
         swap(t, d);
     }
 
@@ -384,6 +384,13 @@ int Date:: operator - (const Date x){
                 }
             }
         }
+
+        // process the year
+        while(t.year > d.year){
+            if(d.year % 4 == 0 && d.year % 100 != 0) res += 366;
+            else res += 365;
+            d.year++;
+        }
         return res;
     }
     // condition : t.year = d.year and check month and day
@@ -420,8 +427,20 @@ int Date:: operator - (const Date x){
 int main(){
     // test all the overload operator and try to test 
     // the most conditions here
-
-
+    Date test(2020, 3, 18);
+    cout << "The object for test is "; test.output();
+    test++;
+    cout << "After the ++ the date becomes "; test.output();
+    test--;
+    cout << "After the -- the date becomes "; test.output();
+    test = test + 10;
+    cout << "After the + 10 the date becomes "; test.output(); 
+    test = test -5;
+    cout << "After the - 5 the date becomes "; test.output();
+    Date test_2(2000, 2, 28);
+    int res = test - test_2;
+    cout << "The result of - is " << res << endl;
+    return 0;
 }
 
 #endif
