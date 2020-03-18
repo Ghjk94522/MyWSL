@@ -51,7 +51,8 @@ public:
     int operator - (Date d);
 };
 
-void Date:: output(string s = ""){
+
+void Date:: output(string s){
     if(s == "" || s == "y-m-d"){
         printf("%d-%d-%d\n", year, month, day);
         return;
@@ -73,6 +74,7 @@ void Date:: output(string s = ""){
         return;
     }
 }
+
 
 Date& Date:: operator ++(){
     day++;
@@ -358,8 +360,7 @@ int Date:: operator - (const Date x){
             else{
                 // condition : normal year
                 while(t.month > d.month){
-                    if(d.month > 12) res += nm[d.month%13 + 1];
-                    else res += nm[d.month];
+                    res += nm[d.month];
                     d.month++;
                 }
             }
@@ -368,21 +369,48 @@ int Date:: operator - (const Date x){
             // condition : t.month < d.month
             t.year--;
             t.month += 12;
-
+            if(flag == 0){
+                while(t.month > d.month){
+                    if(d.month > 12) res += nm[d.month%13 + 1];
+                    else res += nm[d.month];
+                    d.month++;
+                }
+            }
+            else{
+                while(t.month > d.month){
+                    if(d.month > 12) res += lm[d.month%13 + 1];
+                    else res += lm[d.month];
+                    d.month++;
+                }
+            }
         }
+        return res;
     }
     // condition : t.year = d.year and check month and day
     if(t.month == d.month) res += 0;
     else{
         // condiotion : t.year = d.year but t.month > d.month
 
+        // process the day
+        if(t.day >= d.day) res += (t.day - d.day);
+        else{
+            t.month--;
+            if(t.month == 0) t.month = 12;
+            if(flag == 1) t.day += lm[t.month];
+            else t.day += nm[t.month];
+            res += (t.day - d.day);
+        }
+
+        // process the month
+        while(t.month > d.month){
+            if(flag == 0) res += lm[d.month];
+            else res += nm[d.month];
+            d.month++;
+        }
+        return res;
     }
     // condition : t.month = d.month and check day
-    if(t.day == d.month) res += 0;
-    else{
-        // condition : only t.day > d.day
-
-    }
+    res += (t.day - d.day);
     return res;
 }
 
