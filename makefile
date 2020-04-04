@@ -18,3 +18,7 @@ oj_al_test: ./algorithm/L2_2.cpp ./data.in
 
 oj_al_py: ./algorithm/L2_2.py ./data.in
 	python3 ./algorithm/L2_2.py < data.in
+
+google_test: ./Code_Jam/Parent.cpp ./data.in 
+	g++ ./Code_Jam/Parent.cpp -g -o ./test 
+	./test < ./data.in
