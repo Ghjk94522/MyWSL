@@ -17,4 +17,4 @@ oj_al_test: ./algorithm/L2_2.cpp ./data.in
 	./test
 
 oj_al_py: ./algorithm/L2_2.py ./data.in
-	python3 ./algorithm/L2_2.py
+	python3 ./algorithm/L2_2.py < data.in
