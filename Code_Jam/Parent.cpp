@@ -17,8 +17,7 @@ int main(){
             cin >> now.st >> now.en;
             temp.push_back(now);
         }
-        // sort(temp.begin(), temp.end(), cmp);
-        // int flag = 0;
+        
         string r = "C";
         short s1[1441] = {0};
         short s2[1441] = {0};
