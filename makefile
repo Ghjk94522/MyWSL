@@ -15,3 +15,6 @@ homework_test: ./advanced_pog/homework/L6/H2.cpp
 oj_al_test: ./algorithm/L2_2.cpp ./data.in
 	g++ ./algorithm/L2_2.cpp -g -o ./test
 	./test
+
+oj_al_py: ./algorithm/L2_2.py ./data.in
+	python3 ./algorithm/L2_2.py
