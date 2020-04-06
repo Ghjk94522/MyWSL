@@ -1,0 +1,7 @@
+2020-4-7   00:45 AM  Tes
+    try the first question of the kickstart round 1 so many many times and pass eventually
+    the reason of the endless RE is I don't check the index of the vector.
+    (I use a independent var to index the vector in a loop)
+
+        " Machine Is Always Right ! "
+

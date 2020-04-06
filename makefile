@@ -24,6 +24,6 @@ google_test: ./Code_Jam/Parent.cpp ./data.in
 	./test < ./data.in
 
 kick_start: ./Kick_Start/Allocation.cpp ./data.in
-	g++ ./Kick_Start/Allocation.cpp -g -o ./test
+	g++ ./Kick_Start/Allocation.cpp -std=c++14 -g -o ./test
 	./test < ./data.in 
 

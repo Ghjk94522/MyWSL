@@ -1,12 +1,8 @@
-//#include<bits/stdc++.h>
-#include<iostream>
-#include<vector>
-#include<algorithm>
+#include<bits/stdc++.h>
 using namespace std;
 
-
 int main(){
-    int n; cin >> n;
+	int n; cin >> n;
     vector<int> res;
     for(int i = 0; i < n; i++){
         int s, m;
@@ -18,7 +14,7 @@ int main(){
         }
         sort(temp.begin(), temp.end());
         int r = 0; int count = 0;
-        while(m > 0){
+        while(m > 0 && count < s){
             m -= temp[count++];
             if(m >= 0) r++;
         }
