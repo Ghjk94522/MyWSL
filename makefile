@@ -22,3 +22,8 @@ oj_al_py: ./algorithm/L2_2.py ./data.in
 google_test: ./Code_Jam/Parent.cpp ./data.in 
 	g++ ./Code_Jam/Parent.cpp -g -o ./test 
 	./test < ./data.in
+
+kick_start: ./Kick_Start/Allocation.cpp ./data.in
+	g++ ./Kick_Start/Allocation.cpp -g -o ./test
+	./test < ./data.in 
+
