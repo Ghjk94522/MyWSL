@@ -10,7 +10,7 @@ Truck* Manager:: transport(int targetDistance,int weight){
     double pri = truck[0]->price(targetDistance);
     int id = truck[0]->getID();
     for(int i = 1; i < truck.size(); i++){
-        if(truck[i]->price(targetDistance) < pri || \
+        if((truck[i]->price(targetDistance) < pri && truck[i]->price(targetDistance) != -1) || \
         (truck[i]->price(targetDistance) == pri && truck[i]->getTotalIncome() < cos) || \
         (truck[i]->price(targetDistance) == pri && truck[i]->getTotalIncome() == cos && truck[i]->getID() < id)){
             res = truck[i];
@@ -19,6 +19,7 @@ Truck* Manager:: transport(int targetDistance,int weight){
             id = truck[i]->getID();
         }
     }
+    res->transport(targetDistance, weight);
     totalIncome += res->price(targetDistance);
     totalCost += res->cost(targetDistance, weight);
     return res;

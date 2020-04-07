@@ -14,8 +14,10 @@ double NormalTruck:: price(int targetDistance){
 }
 
 void NormalTruck:: transport(int targetDistance, int weight){
-    totalIncome += price(targetDistance);
-    totalCost += cost(targetDistance, weight);
+    if(price(targetDistance) != -1 && cost(targetDistance, weight) != -1){
+        totalIncome += price(targetDistance);
+        totalCost += cost(targetDistance, weight);
+    }
 }
 
 double AdvancedTruck:: cost(int targetDistance, int weight){
@@ -42,8 +44,10 @@ double LongDistanceTruck:: price(int targetDistance){
 }
 
 void LongDistanceTruck:: transport(int targetDistance, int weight){
-    totalIncome += price(targetDistance);
-    totalCost += cost(targetDistance, weight);
+    if(price(targetDistance) != -1 && cost(targetDistance, weight) != -1){
+        totalIncome += price(targetDistance);
+        totalCost += cost(targetDistance, weight);
+    }
 }
 
 double LongDistanceTruck:: cost(int targetDistance, int weight){

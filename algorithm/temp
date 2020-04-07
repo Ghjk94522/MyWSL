@@ -1,0 +1,217 @@
+#include<bits/stdc++.h>
+#define maxn 10000
+using namespace std;
+
+// the maxheap is the same as the minheap
+// so this struct is a gernal module for
+// both minheap and maxheap
+struct MinHeap{
+    int a[maxn];
+    int current;
+};
+
+// the function that siftdown the element
+// use iteration to compare the data with 
+// their children and swap them
+// this function can find the smallest element
+// and put it to the top of the heap
+void siftDown(int start, int end, MinHeap &x){
+    int i = start, j = 2 * i + 1;
+    int temp = x.a[i];
+    while(j <= end){
+        if(j < end && x.a[j] > x.a[j+1])
+            j++;
+        if(temp <= x.a[j])
+            break;
+        else{
+            x.a[i] = x.a[j];
+            i = j;
+            j = 2 * j + 1;
+        }
+    }
+    x.a[i] = temp;
+}
+
+// the function that siftup the element
+// use the iteration to compare the data
+// with their father and swap them
+// this function can find the new element's
+// right position so it's used in the insert funciton
+void siftUp(int start, MinHeap &x){
+    int j = start, i = (j - 1) / 2;
+    int temp = x.a[j];
+    while(j > 0){
+        if(x.a[i] <= temp)
+            break;
+        else{
+            x.a[j] = x.a[i];
+            j = i;
+            i = (i - 1) / 2;
+        }
+    }
+    x.a[j] = temp;
+}
+
+// insert a new element into the heap
+// and use the siftup to find the right position
+bool heapInsert(int n, MinHeap &x){
+    if(x.current == maxn-1){
+        cerr << "Heap is full!\n";
+        return false;
+    }
+    x.a[x.current] = n;
+    siftUp(x.current, x);
+    x.current++;
+    return true;
+}
+
+// remove the element at the top of
+// the heap and use siftdown to rebuild
+// the heap to a right status 
+bool heapRemove(MinHeap &x){
+    if(!x.current){
+        cerr << "Heap is empty!\n";
+        return false;
+    }
+    x.a[0] = x.a[x.current-1];
+    x.current--;
+    siftDown(0, x.current-1, x);
+    return true; 
+}
+
+// the functions above are all for the minheap's
+// so the funcions followed are for the maxheap's
+// they are just different from the way to compare
+// so I omit this part of comments
+void siftDown_m(int start, int end, MinHeap &x){
+    int i = start, j = 2 * i + 1;
+    int temp = x.a[i];
+    while(j <= end){
+        if(j < end && x.a[j] < x.a[j+1])
+            j++;
+        if(temp >= x.a[j])
+            break;
+        else{
+            x.a[i] = x.a[j];
+            i = j;
+            j = 2 * j + 1;
+        }
+    }
+    x.a[i] = temp;
+}
+
+void siftUp_m(int start, MinHeap &x){
+    int j = start, i = (j - 1) / 2;
+    int temp = x.a[j];
+    while(j > 0){
+        if(x.a[i] >= temp)
+            break;
+        else{
+            x.a[j] = x.a[i];
+            j = i;
+            i = (i - 1) / 2;
+        }
+    }
+    x.a[j] = temp;
+}
+
+bool heapInsert_m(int n, MinHeap &x){
+    if(x.current == maxn-1){
+        cerr << "Heap is full!\n";
+        return false;
+    }
+    x.a[x.current] = n;
+    siftUp_m(x.current, x);
+    x.current++;
+    return true;
+}
+
+bool heapRemove_m(MinHeap &x){
+    if(!x.current){
+        cerr << "Heap is empty!\n";
+        return false;
+    }
+    x.a[0] = x.a[x.current-1];
+    x.current--;
+    siftDown_m(0, x.current-1, x);
+    return true; 
+}
+
+
+// something wrong with the programme and I didn't find it
+// I have found the bug with the functions that are used to
+// established the heaps siftup but still has a problem 
+// that I will miss an answer when the process ends
+int main(){
+    MinHeap inh, axh; // inh means the minHeap and the axh means maxHeap
+    int ans[maxn] = {0};
+    inh.current = axh.current = 0;
+    int n;
+    cin >> n;
+    n--;
+    int temp;
+    cin >> temp; // the first data and assign it as a flag
+    ans[0] = temp; // the first data must be the mid value
+
+    int count = 1;
+
+    // read the data in loop and insert them to the right heap
+    // the value less than the mid value sill be inserted into
+    // the maxHeap and other values willbe inserted into the 
+    // maxHeap so that we can find the nearest value quickly
+    for(int i = 0; i < n; i++){
+        int ind;
+        cin >> ind;
+        if(ind >= temp)
+            heapInsert(ind, inh);
+        else
+            heapInsert_m(ind, axh);
+        // check the number of both heaps and adjust them
+        // to ensure the mid value is in the right position
+        int sub;
+        sub = axh.current - inh.current;
+        switch(sub){
+            case 0: {
+                // when the numbers are equal means the mid value is just the mid
+                ans[count++] = temp; break;
+            }
+            case 1: {
+                // the axh is 1 more than inh means output the average of mid and
+                // the top of the maxHeap
+                int res = (temp + axh.a[0]) / 2;
+                ans[count++] = res; break;
+            }
+            case -1: {
+                // the opposite consequence of the case 1
+                int res = (temp + inh.a[0]) / 2;
+                ans[count++] = res; break;
+            }
+            case 2: {
+                // when the number of two heaps' elements differ two
+                // we should adjust them and rewrite the mid
+                heapInsert(temp, inh);
+                temp = axh.a[0];
+                heapRemove_m(axh);
+                ans[count++] = temp; break;
+            }
+            case -2: {
+                // the opposite consequence of the case 2
+                heapInsert_m(temp, axh);
+                temp = inh.a[0];
+                heapRemove(inh);
+                ans[count++] = temp; break;
+            }
+            default: {
+                // when the sub is not the value above output a message and kill the process
+                cout << "Something wrong happens where the sub is in a wrong value.\n";
+                return -1;
+            }
+        }
+    }
+
+    // output the answers side by side
+    for(int i = 0; i <= n; i++)
+        cout << ans[i] << "\n";
+
+    return 0;
+}

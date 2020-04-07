@@ -5,3 +5,11 @@
 
         " Machine Is Always Right ! "
 
+2020-4-7   23:06 PM   Tes
+    In the advanced OJ test, I forget to check if the mission is legle in the normal truck
+    which has a distance limit, and I don't find it until I notice the chat in the QQ group.
+    Should be remembered !!!
+
+    And I just make a mistake that I use a loop :
+        for(int i = 0; i < 100; i *= 2){..}
+    So stupid am I, this is a forever loop!!!
