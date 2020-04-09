@@ -27,3 +27,6 @@ kick_start: ./Kick_Start/Allocation.cpp ./data.in
 	g++ ./Kick_Start/Allocation.cpp -std=c++14 -g -o ./test
 	./test < ./data.in 
 
+luogu_test: ./Oj_luogu/P3367.cpp
+	g++ ./Oj_luogu/P3367.cpp -g -o ./test
+	./test < ./data.in
