@@ -13,3 +13,6 @@
     And I just make a mistake that I use a loop :
         for(int i = 0; i < 100; i *= 2){..}
     So stupid am I, this is a forever loop!!!
+
+2020-4-11 00:17 AM    Sta
+    do some luogu oj test for pupil.
