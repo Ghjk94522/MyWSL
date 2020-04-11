@@ -1,6 +1,7 @@
 /*
 * This file contains two class that minHeap and maxHeap both the declaration and their achievement
 * Created on 4-8-2020
+* Last edit on 4-11-2020
 */
 
 #include<bits/stdc++.h>
@@ -14,6 +15,8 @@ public:
     void siftUp(int start);
     bool insert(int n);
     bool remove();
+    int size(){ return h.size(); }
+    int top(){ return h[0]; }
 };
 
 class maxHeap{
@@ -23,16 +26,10 @@ public:
     void siftUp(int start);
     bool insert(int n);
     bool remove();
-}
+    int size(){ return h.size(); }
+    int top(){ return h[0]; }
+};
 
-/*
-*
-* The function will sift down the element using the iterator to compare the element with
-* their child and swap them if necessary
-* The function will find the smallest element and put it onto the top of the heap
-* So it's used in the remove function
-*
-*/
 void minHeap:: siftDown(int start, int end){
     int i = start, j = 2 * i + 1;
     int temp = h[i];
@@ -48,14 +45,6 @@ void minHeap:: siftDown(int start, int end){
     h[i] = temp;
 }
 
-/*
-*
-* The function will sift up the element using the iterator to compare the element with their
-* father and swap if necessary
-* The function can find the new element's right right position 
-* So it's used in the insert function 
-*
-*/
 void minHeap:: siftUp(int start){
     int j = start, i = (j-1) / 2;
     int temp = h[j];
@@ -70,22 +59,12 @@ void minHeap:: siftUp(int start){
     h[j] = temp;
 }
 
-/*
-*
-* insert a new element into the heap
-*
-*/
 bool minHeap:: insert(int n){
     h.push_back(n);
     siftUp(h.size()-1);
     return true;
 }
 
-/*
-*
-* remove the element at the top of the heap and rebuild the heap
-*
-*/
 bool minHeap:: remove(){
     if(!h.size()){
         cerr << "minHeap is empty!\n";
@@ -113,7 +92,7 @@ void maxHeap:: siftDown(int start, int end){
     h[i] = temp;
 }
 
-void minHeap:: siftUp(int start){
+void maxHeap:: siftUp(int start){
     int j = start, i = (j-1) / 2;
     int temp = h[j];
     while(j > 0){
@@ -127,13 +106,13 @@ void minHeap:: siftUp(int start){
     h[j] = temp;
 }
 
-bool minHeap:: insert(int n){
+bool maxHeap:: insert(int n){
     h.push_back(n);
     siftUp(h.size()-1);
     return true;
 }
 
-bool minHeap:: remove(){
+bool maxHeap:: remove(){
     if(!h.size()){
         cerr << "minHeap is empty!\n";
         return false;
