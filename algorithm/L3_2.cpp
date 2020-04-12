@@ -1,5 +1,5 @@
 #include <bits/stdc++.h>
-#define elif else if
+#include "../include/common.h"
 using namespace std;
 
 struct node
@@ -26,21 +26,15 @@ node *prein2tree(int prel, int prer, int inl, int inr,
     return root;
 }
 
-void visit(node *root, int &max, int &second)
+void visit(node *root, int &max)
 {
-    if(root == NULL) return;
+    if (root == NULL)
+        return;
     if (root->height > max)
-    {
-        second = max;
         max = root->height;
-    }
-    elif (root->height > second)
-    {
-        second = root->height;
-    }
     // cout << root->val << endl;
-    visit(root->left, max, second);
-    visit(root->right, max, second);
+    visit(root->left, max);
+    visit(root->right, max);
 }
 
 int main()
@@ -61,9 +55,10 @@ int main()
         r.push_back(temp);
     }
     node *root = prein2tree(0, p.size() - 1, 0, r.size() - 1, 0, p, r);
-    int max = -1, second = -1;
-    visit(root, max, second);
+    int max = -1;
+    visit(root, max);
+    int d = -1;
     cout << max << endl
-         << max + second + 1 << endl;
+         << d << endl;
     return 0;
 }
