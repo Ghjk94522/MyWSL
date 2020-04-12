@@ -60,8 +60,14 @@ bool minHeap:: remove(){
 }
 
 int main(){
-    int n; 
+    int n;
+    minHeap a;
     while(cin >> n){
-        
+        a.insert(n);
     }
+    while(a.size()){
+        cout << a.top() << endl;
+        a.remove();
+    }
+    return 0;
 }
