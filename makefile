@@ -12,8 +12,8 @@ homework_test: ./advanced_pog/homework/L7/H4.cpp
 	g++ ./advanced_pog/homework/L7/H4.cpp -g -o ./test 
 	./test
 
-oj_al_test: ./algorithm/L3_1.cpp ./data.in
-	g++ ./algorithm/L3_1.cpp -g -o ./test
+oj_al_test: ./algorithm/L3_2.cpp ./data.in
+	g++ ./algorithm/L3_2.cpp -g -o ./test
 	./test < data.in > data.out
 
 oj_al_py: ./algorithm/L2_2.py ./data.in
