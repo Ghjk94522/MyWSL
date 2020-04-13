@@ -1,2 +1,8 @@
-2
-4
+string 1
+string 2
+string 3
+string 4
+destructor of D
+destructor of C
+destructor of B
+destructor of A
