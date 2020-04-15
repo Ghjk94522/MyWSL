@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
 #include "../include/common.h"
+// #define N 10010
 using namespace std;
 
 struct node
@@ -24,17 +25,6 @@ node *prein2tree(int prel, int prer, int inl, int inr,
     root->left = prein2tree(prel + 1, prel + k - inl, inl, k - 1, height + 1, p, r);
     root->right = prein2tree(prel + k - inl + 1, prer, k + 1, inr, height + 1, p, r);
     return root;
-}
-
-void visit(node *root, int &max)
-{
-    if (root == NULL)
-        return;
-    if (root->height > max)
-        max = root->height;
-    // cout << root->val << endl;
-    visit(root->left, max);
-    visit(root->right, max);
 }
 
 int head[N] = {0};
@@ -66,6 +56,24 @@ void dp(int x){
     }
 }
 
+void visit(node *root, int &max)
+{
+    if (root == NULL)
+        return;
+    if (root->height > max)
+        max = root->height;
+    // cout << root->val << endl;
+    if(root->left != NULL){
+        add(root->val, root->left->val, 1);
+        add(root->left->val, root->val, 1);
+        visit(root->left, max);
+    }
+    if(root->right != NULL){
+        add(root->val, root->right->val, 1);
+        add(root->right->val, root->val, 1);
+        visit(root->right, max);
+    }
+}
 
 int main()
 {
@@ -90,7 +98,8 @@ int main()
     int d = -1;
     tot = 0; ans = 0;
     for(int i = 0; i <= n; i++) v[i] = false;
+    dp(1);
     cout << max << endl
-         << d << endl;
+         << ans << endl;
     return 0;
 }
