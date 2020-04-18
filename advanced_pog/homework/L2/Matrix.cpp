@@ -11,7 +11,7 @@ public:
         this->row = row;
         this->col = col;
         mat = new int[row*col];
-    };
+    }
     void input(int* a, int length);
     void print();
     void swap_node(int &a, int &b){
@@ -61,7 +61,6 @@ void Matrix:: transpose(){
         cout << "Please input your data first.\n";
         return;
     }
-    int newr = col, newc = row;
     int *temp = new int [col * row];
     for(int i = 0; i < col*row; i++) temp[i] = 0;
     for(int i = 0; i < row; i++){
