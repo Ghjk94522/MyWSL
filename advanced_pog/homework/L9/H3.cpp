@@ -124,7 +124,6 @@ int main()
     d.setMatrix();
     cout << "Matrix d is : \n";
     d.display();
-    // something wrong here
     Matrix<double> res = c + d;
     cout << "The result of the matrix c + d is : \n";
     res.display();
