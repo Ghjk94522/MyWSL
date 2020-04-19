@@ -18,7 +18,8 @@ public:
     {
         col = mat.col;
         row = mat.row;
-        delete[] matrix;
+        //if(matrix != NULL)
+        //    delete[] matrix;
         matrix = new T[row * col];
         for (int i = 0; i < row * col; i++)
         {
@@ -34,24 +35,7 @@ public:
     {
         row = col = 0;
         delete[] matrix;
-    }
-    Matrix(Matrix &&a)
-    {
-        row = a.row;
-        col = a.col;
-        delete[] matrix;
-        matrix = a.matrix;
-        a.matrix = NULL;
-        a.row = a.col = 0;
-    }
-    Matrix operator=(Matrix &&a)
-    {
-        row = a.row;
-        col = a.col;
-        delete[] matrix;
-        matrix = a.matrix;
-        a.matrix = NULL;
-        a.row = a.col = 0;
+        matrix = NULL;
     }
 };
 
@@ -134,14 +118,21 @@ int main()
     a.display();
     Matrix<double> c(4, 5);
     c.setMatrix();
+    cout << "Matrix c is : \n";
+    c.display();
     Matrix<double> d(4, 5);
     d.setMatrix();
+    cout << "Matrix d is : \n";
+    d.display();
     // something wrong here
     Matrix<double> res = c + d;
     cout << "The result of the matrix c + d is : \n";
     res.display();
     Matrix<double> e(3, 5);
     e.setMatrix();
+    cout << "Matrix e is : \n";
+    e.display();
+    cout << "The result of the square is : \n";
     e.square();
     return 0;
 }
