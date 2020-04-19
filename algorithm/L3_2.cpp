@@ -35,7 +35,8 @@ bool v[N];
 int tot;
 
 // the dp to calculate the d of the tree
-void add(int x, int y, int z){
+void add(int x, int y, int z)
+{
     ver[++tot] = y;
     edge[tot] = z;
     Next[tot] = head[x];
@@ -45,14 +46,19 @@ void add(int x, int y, int z){
 int ans;
 int d[N] = {0};
 
-void dp(int x){
+void dp(int x)
+{
     v[x] = true;
-    for(int i = head[x]; i; i = Next[i]){
+    for (int i = head[x]; i; i = Next[i])
+    {
         int y = ver[i];
-        if(v[y]) continue;
+        if (v[y])
+            continue;
         dp(y);
-        if(d[x] + d[y] + edge[i] > ans) ans = d[x] + d[y] + edge[i];
-        if(d[y] + edge[i] > d[x]) d[x] = d[y] + edge[i];
+        if (d[x] + d[y] + edge[i] > ans)
+            ans = d[x] + d[y] + edge[i];
+        if (d[y] + edge[i] > d[x])
+            d[x] = d[y] + edge[i];
     }
 }
 
@@ -63,12 +69,14 @@ void visit(node *root, int &max)
     if (root->height > max)
         max = root->height;
     // cout << root->val << endl;
-    if(root->left != NULL){
+    if (root->left != NULL)
+    {
         add(root->val, root->left->val, 1);
         add(root->left->val, root->val, 1);
         visit(root->left, max);
     }
-    if(root->right != NULL){
+    if (root->right != NULL)
+    {
         add(root->val, root->right->val, 1);
         add(root->right->val, root->val, 1);
         visit(root->right, max);
@@ -96,8 +104,10 @@ int main()
     int max = -1;
     visit(root, max);
     int d = -1;
-    tot = 0; ans = 0;
-    for(int i = 0; i <= n; i++) v[i] = false;
+    tot = 0;
+    ans = 0;
+    for (int i = 0; i <= n; i++)
+        v[i] = false;
     dp(1);
     cout << max << endl
          << ans << endl;
