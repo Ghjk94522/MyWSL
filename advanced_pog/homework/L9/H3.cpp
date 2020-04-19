@@ -35,24 +35,33 @@ public:
         row = col = 0;
         delete[] matrix;
     }
+    /*
     Matrix(Matrix &&a)
     {
-        row = a.row;
-        col = a.col;
-        delete[] matrix;
-        matrix = a.matrix;
-        a.matrix = NULL;
-        a.row = a.col = 0;
+        //if (a != *this)
+        //{
+            row = a.row;
+            col = a.col;
+            delete[] matrix;
+            matrix = a.matrix;
+            a.matrix = NULL;
+            a.row = a.col = 0;
+        //}
     }
     Matrix operator=(Matrix &&a)
     {
+        if (a == *this)
+            return *this;
         row = a.row;
         col = a.col;
         delete[] matrix;
+        // for(int i = 0; i < row*col; i++) matrix[i] = a.matrix[i];
         matrix = a.matrix;
         a.matrix = NULL;
         a.row = a.col = 0;
+        return *this;
     }
+    */
 };
 
 template <class T>
