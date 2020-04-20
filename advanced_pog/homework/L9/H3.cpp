@@ -33,8 +33,10 @@ public:
     ~Matrix()
     {
         row = col = 0;
+        if(matrix != NULL)
         delete[] matrix;
     }
+    /*
     Matrix(Matrix &&a)
     {
         row = a.row;
@@ -53,6 +55,7 @@ public:
         a.matrix = NULL;
         a.row = a.col = 0;
     }
+    */
 };
 
 template <class T>
