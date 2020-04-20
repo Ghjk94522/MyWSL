@@ -9,7 +9,7 @@ oj_ad_test: ./advanced_pog/oj/E3/OJ_3_1.cpp ./advanced_pog/oj/E3/OJ_3_1.h
 	./test 
 
 homework_test: ./advanced_pog/homework/L9/H3.cpp
-	g++ ./advanced_pog/homework/L9/H3.cpp -g -o ./test 
+	g++ ./advanced_pog/homework/L9/H3.cpp -g -o ./test 2> g++result.txt
 	./test < data.in
 
 oj_al_test: ./algorithm/L3_2.cpp ./data.in

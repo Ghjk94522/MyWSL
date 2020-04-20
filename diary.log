@@ -14,5 +14,10 @@
         for(int i = 0; i < 100; i *= 2){..}
     So stupid am I, this is a forever loop!!!
 
-2020-4-11 00:17 AM    Sta
+2020-4-11   00:17 AM   Sta
     do some luogu oj test for pupil.
+
+2020-4-19   22:50 PM   Sun
+    I have some thing wrong with the "转移构造函数和转移赋值函数" and "拷贝构造函数"
+    and the bug of the followed has been found and fix, the other makes me give 
+    up. So upset!
