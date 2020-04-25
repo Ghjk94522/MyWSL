@@ -14,13 +14,17 @@ int test:: operator +(const test& x){
     return a + b + x.a + x.b;
 }
 
+string insertStr(string str, int i, string s)
+{
+    string temp1 = str.substr(0, i);
+    string temp2 = str.substr(i);
+    str = temp1 + s + temp2;
+    return str;
+}
+
 int main(){
-    vector<test *> tes;
-    test *a = new test(1, 2);
-    test *b = new test(3, 4);
-    tes.push_back(a);
-    tes.push_back(b);
-    cout << tes.size() << endl;
-    
+    string s = "Hello code";
+    s = insertStr(s, 5, " Visual Studio");
+    cout << s << endl;
     return 0;
 }
