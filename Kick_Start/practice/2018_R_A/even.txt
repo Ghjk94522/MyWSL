@@ -1,0 +1,23 @@
+Problem A : Even Digits
+
+Determine the minimum number of button presses to make with 
+no odd digits. A button press can increase the number by 1 or
+decrease the number by 1.
+
+Examples:
+42=>0
+11=>3
+1=>1
+2018=>2
+
+Limits:
+    small dataset : 1~10^5
+    large dataset : 1~10^16
+
+My idea :
+逐位查找看哪一位是奇数，从高位考虑是增还是减，最后算差值即可
+
+Final version :
+初始的贪心思路是对的，但是还要确保改变最高位之后后面的数字也要注意改变，比如：
+    8889231 => 20000000
+    也不太难实现，只要确保8或0即可
