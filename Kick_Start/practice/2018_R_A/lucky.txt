@@ -1,0 +1,8 @@
+Problem B :
+In this lucky dip, there is a bag with N items. The i-th item in the bag has value V_i.
+You will put your hand into the bag and draw one item at random; all items in the bag has an equal
+probability of being chosen.
+You may only redip a maximum of K times.
+
+Play optimally to maximize the value of the item you will end the game with, what's the 
+expected value of that item?
