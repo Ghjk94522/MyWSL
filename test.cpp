@@ -22,9 +22,20 @@ string insertStr(string str, int i, string s)
     return str;
 }
 
+int time2int(string a){
+    int res = 0;
+    string temp = "";
+    for(int i = 0; a[i]; i++){
+        if(a[i] == ':') break;
+        temp += a[i];
+    }
+    res = stoi(temp);
+    return res;
+}
+
 int main(){
-    string s = "Hello code";
-    s = insertStr(s, 5, " Visual Studio");
-    cout << s << endl;
+    string a = "11:00";
+    int res = time2int(a);
+    cout << res << endl;
     return 0;
 }
