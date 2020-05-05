@@ -1,0 +1,23 @@
+The fake code of Prim algorithm in graph theory
+
+Initialize all nodes in G as UNSEEN;
+Initialize the priority queue queNode as empty;
+Initialize edge set MST as empty;
+Select an arbitrary vertex s to start building the minimum spanning tree;
+s.candidateEdge := NULL;
+queNode.INSERT(s, -∞);
+while queNode != empty do:
+    v := queNode.EXTRACT-MIN();
+    MST := MST U {v.candidateEdge};
+    UPDATE-FRINGE(queNode, v);
+
+subroutine UPDATE-FRINGE(queNode, v) begin:
+    foreach neighbor w of v do:
+        newWeight := vw.weight;
+        if w is UNSEEN then:
+            w.candidateEdge := vw;
+            queNode.INSERT(w, newWeight);
+        else:
+            if newWeight < w.priority then:
+                w.candidateEdge := vw;
+                queNode.DECREASE-KEY(w, newWeight);
