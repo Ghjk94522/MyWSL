@@ -34,8 +34,9 @@ int time2int(string a){
 }
 
 int main(){
-    string a = "11:00";
-    int res = time2int(a);
-    cout << res << endl;
+    ofstream out;
+    out.open("./database/test.txt", ios::out);
+    if(out.is_open()) cout << 1 << endl;
+    else cout << 2 << endl;
     return 0;
 }
