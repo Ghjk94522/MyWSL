@@ -1,4 +1,5 @@
 #include<bits/stdc++.h>
+#define NDEBUG
 using namespace std;
 
 class test{
