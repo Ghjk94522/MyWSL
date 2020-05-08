@@ -59,7 +59,7 @@ void Web::inputPhone()
 
 void Web::uploadFile()
 {
-    cout << "Input the article file path : ";
+    // cout << "Input the article file path : ";
     string addr;
     cin >> addr;
     ifstream in;
@@ -105,6 +105,7 @@ void Web::enroll()
         exit(-1);
     }
 L1:
+    cout << "Input your number : ";
     try
     {
         inputPhone();
@@ -114,7 +115,9 @@ L1:
         cerr << "The parameter number is wrong and please input again. (The number can only contain 0-9 and '-'\n";
         goto L1;
     }
+
 L2:
+    cout << "Input your article file path : ";
     try
     {
         uploadFile();
@@ -126,6 +129,9 @@ L2:
     }
 }
 
-int main(){
-    
+int main()
+{
+    Web web;
+    web.enroll();
+    return 0;
 }
