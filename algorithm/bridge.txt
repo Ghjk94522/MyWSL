@@ -1,0 +1,14 @@
+def ARTICULATION-POINT(V):
+    v.color := GRAY;
+    time := time + 1;
+    v.discoverTime := time;
+    v.back := v.discoverTime;
+    for each neighbour w of v do:
+        if w.color = WHITE then:
+            w.back := ARTICULATION-POINT(w);
+            if w.back >= v.discoverTime then:
+                Output v as an articulation point;
+            v.back := min{v.back, w.back};
+        elif vw is BE then:
+            v.back := min{v.back, w.discoverTime};
+    return back;

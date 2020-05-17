@@ -34,8 +34,15 @@ int time2int(string a){
     return res;
 }
 
+int edit(int *a){
+    a[0] = 100;
+}
+
 int main(){
-    int x = 0;
-    assert(x == 1);
+    int n = 100;
+    int *a = new int[n];
+    a[0] = 10010;
+    edit(a);
+    cout << a[0] << endl;
     return 0;
 }

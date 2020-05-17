@@ -1,0 +1,12 @@
+def DFS(v, parent):
+    v..color := GRAY;
+    <Preorder processing of node v>;
+    for each neighbour w of v do:
+        if w.color = WHITE then:
+            <Exploratory processing of TE vw>;
+            DFS(w, v);
+            <Backtrack processing for TE vw>;
+        elif w.color = GRAY and w != parent then:
+            <Check BE vw>;
+    <Postorder processing of node v>;
+    v.color := BLACK;
