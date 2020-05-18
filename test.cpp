@@ -38,11 +38,14 @@ int edit(int *a){
     a[0] = 100;
 }
 
+bool cmp(int a, int b){
+    return a > b;
+}
+
 int main(){
-    int n = 100;
-    int *a = new int[n];
-    a[0] = 10010;
-    edit(a);
-    cout << a[0] << endl;
+    vector<int> a;
+    for(int i = 0; i < 10; i++) a.push_back(i);
+    sort(a.begin(), a.end(), cmp);
+    for(int i = 0; i < 10; i++) cout << a[i] << endl;
     return 0;
 }

@@ -1,0 +1,14 @@
+def find_bridge(u):
+    u.color = GRAY;
+    time := time + 1;
+    u.discoverTime := time;
+    u.back := u.discoverTime;
+    for each neighbour v of u do:
+        if v.color = WHITE then:
+            find_bridge(v);
+            u.back := min{u.back, v.back};
+            if v.back > u.discoverTime then:
+                Output uv as a bridge;
+        elif uv is BE then:
+            u.back := min{u.back, v.discoverTime};
+    return
