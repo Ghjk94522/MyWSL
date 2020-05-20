@@ -25,15 +25,31 @@ void CarDatabase::add(CarRecord cr){
         }
     }
     list.push_back(cr);
+    ofstream out;
+    out.open(path, ios::out|ios::trunc);
+    out << list.size() << endl;
+    for(int i = 0; i < list.size(); i++){
+        out << list[i].getCar() << "\t" << list[i].getDate()
+            << "\t" << list[i].getTime() << "\n";
+    }
+    out.close();
 }
 
 void CarDatabase::del(string car){
-    vector<int> res;
     for(int i = list.size()-1; i >= 0; i--){
         if(list[i].getCar() == car){
             list.erase(list.begin()+i);
         }
     }
+    ofstream out;
+    out.open(path, ios::out|ios::trunc);
+    out << list.size() << endl;
+    for(int i = 0; i < list.size(); i++){
+        out << list[i].getCar() << "\t"
+            << list[i].getDate() << "\t"
+            << list[i].getTime() << "\n";
+    }
+    out.close();
 }
 
 void CarDatabase::del(int date){
@@ -42,6 +58,15 @@ void CarDatabase::del(int date){
             list.erase(list.begin()+i);
         }
     }
+    ofstream out;
+    out.open(path, ios::out|ios::trunc);
+    out << list.size() << endl;
+    for(int i = 0; i < list.size(); i++){
+        out << list[i].getCar() << "\t"
+            << list[i].getDate() << "\t"
+            << list[i].getTime() << "\n";
+    }
+    out.close();
 }
 
 void CarDatabase::del(string car, int date){
@@ -50,6 +75,15 @@ void CarDatabase::del(string car, int date){
             list.erase(list.begin()+i);
         }
     }
+    ofstream out;
+    out.open(path, ios::out|ios::trunc);
+    out << list.size() << endl;
+    for(int i = 0; i < list.size(); i++){
+        out << list[i].getCar() << "\t"
+            << list[i].getDate() << "\t"
+            << list[i].getTime() << "\n";
+    }
+    out.close();
 }
 
 void CarDatabase::del(string car, int date, string time){
@@ -58,9 +92,18 @@ void CarDatabase::del(string car, int date, string time){
             list.erase(list.begin()+i);
         }
     }
+    ofstream out;
+    out.open(path, ios::out|ios::trunc);
+    out << list.size() << endl;
+    for(int i = 0; i < list.size(); i++){
+        out << list[i].getCar() << "\t"
+            << list[i].getDate() << "\t"
+            << list[i].getTime() << "\n";
+    }
+    out.close();
 }
 
-void CarDatabase::time_s2i(CarRecord &c, int &h, int &m){
+void time_s2i(CarRecord &c, int &h, int &m){
     string temp = "";
     int i = 0;
     for(; c.getTime()[i] != ':'; i++){
@@ -110,9 +153,18 @@ void CarDatabase::del(int date, string time_start, string time_end){
                 list.erase(list.begin()+i);
         }
     }
+    ofstream out;
+    out.open(path, ios::out|ios::trunc);
+    out << list.size() << endl;
+    for(int i = 0; i < list.size(); i++){
+        out << list[i].getCar() << "\t"
+            << list[i].getDate() << "\t"
+            << list[i].getTime() << "\n";
+    }
+    out.close();
 }
 
-bool CarDatabase::cmp(CarRecord a, CarRecord b){
+bool cmp(CarRecord a, CarRecord b){
     if(a.getDate() < b.getDate()) return true;
     else if (a.getDate() > b.getDate()) return false;
     else {
@@ -124,7 +176,11 @@ bool CarDatabase::cmp(CarRecord a, CarRecord b){
         else if(a_h > b_h) return false;
         else{
             if(a_m < b_m) return true;
-            else return false;
+            else if(a_m > b_m) return false;
+            else{
+                if(a.getCar() < b.getCar()) return true;
+                else return false;
+            }
         }
     }
 }
@@ -135,11 +191,21 @@ vector<CarRecord> CarDatabase::IndexRecordsByCar(string car){
         if(list[i].getCar() == car) 
             res.push_back(list[i]);
     }
-
     sort(res.begin(), res.end(), cmp);
     return res;
 }
 
-vector<CarRecord> CarDatabase::IndexRecordsByDate(int date){
-    
+vector<CarRecord> CarDatabase::IndexRecordsByDate(int dat){
+    vector<CarRecord> res;
+    for(int i = 0; i < list.size(); i++){
+        if(list[i].getDate() == dat){
+            for(int j = 0; j < res.size(); j++){
+                if(res[j].getCar() == list[i].getCar()) {
+                    if(false == cmp(list[i], res[j])) res[j] = list[i];
+                }
+            }
+        }
+    }
+    sort(res.begin(), res.end(), cmp);
+    return res;
 }

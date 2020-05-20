@@ -1,0 +1,20 @@
+def select_sort(A[1..n]):
+    for i := n downto 2 do:
+        index_of_max := select_sort(A[1..i]);
+        swap(A[index_of_max], A[i]);
+
+def insertion_sort(A[1..n]):
+    for j := 2 to n do:
+        temp := A[j];
+        i := j - 1;
+        while i > 0 and A[i] > temp do:
+            A[i+1] := A[i];
+            i := i - 1;
+        A[i+1] := temp;
+
+def bubble_sort(A[1..n]):
+    for i := n downto 2  do:
+        for j := 1 to i-1 do:
+            if A[j] > A[j+1] then:
+                swap(A[j], A[j+1]);
+

@@ -21,8 +21,8 @@ public:
     void del(int date,string time_start,string time_end);
     vector<CarRecord> IndexRecordsByCar(string car);
     vector<CarRecord> IndexRecordsByDate(int date);
-    void time_s2i(CarRecord &c, int &h, int &m);
-    bool cmp(CarRecord, CarRecord);
+    friend void time_s2i(CarRecord &c, int &h, int &m);
+    friend bool cmp(CarRecord, CarRecord);
 };
 
 #endif
