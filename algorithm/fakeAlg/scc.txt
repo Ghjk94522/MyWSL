@@ -1,0 +1,8 @@
+def scc(G):
+    Initiate the empty stack nodeStack;
+    Perform DFS on G. In the postorder processing of each vertex v, insert the statement "nodeStack.push(v)"
+    Compute the transpose graph G_T of G;
+    Color all nodes WHITE;
+    while nodeStack != empty do:
+        v := nodeStack.pop();
+        Conduct DFS from v on G_T;

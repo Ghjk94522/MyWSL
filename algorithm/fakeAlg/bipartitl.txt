@@ -1,0 +1,16 @@
+def BFS_bipartite(G):
+    Pick any node v;
+    v.color := GRAY;
+    v.bipartiteColor := RED;
+    queNode.ENQUEUE(v);
+    while queNode != empty do:
+        w := queNode.DEQUEUE();
+        for each neighbour x of w do:
+            if x.color = WHITE then:
+                x.color := GRAY;
+                x.bipartiteColor := !w.bipartiteColor;
+                queNode.ENQUEUE(x);
+            elif x.bipartiteColor = w.bipartiteColor then:
+                return false;
+        w.color := BLACK;
+    return true;

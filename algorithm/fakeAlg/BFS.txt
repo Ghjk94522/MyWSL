@@ -1,0 +1,23 @@
+// Directed Graph
+def BFS_wrapper(G):
+    for each node v in G do:
+        v.color := WHITE; v.parent:= NULL; v.dis := +∞
+    for each node v in G do:
+        if v.color = WHITE then:
+            BFS(v);
+
+def BFS(v):
+    Initialize an empty queue queNode;
+    v.color := GRAY;
+    v.dis := 0;
+    queNode.ENQUE(v);
+    while queNode != empty do:
+        w := queNode.DEQUE();
+        for each neighbour x of w do:
+            if x.color = WHITE then:
+                x.color = GRAY;
+                x.parent := w;
+                x.dis := w.dis+1;
+                queNode.ENQUEUE(x);
+        <processing of node w>;
+        w.color := BLACK;

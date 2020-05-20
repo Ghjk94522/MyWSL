@@ -18,3 +18,19 @@ def bubble_sort(A[1..n]):
             if A[j] > A[j+1] then:
                 swap(A[j], A[j+1]);
 
+def partition(A, p, r):
+    pivot := A[r];
+    i := p-1;
+    for j := p to r-1 do:
+        if A[j] < pivot then:
+            i := i+1;
+            swap(A[i], A[j]);
+    swap(A[i+1], A[r]);
+    return i+1;
+
+def quick_sort(A, p, r):
+    if p < r then:
+        q := partition(A, p, r);
+        quick_sort(A, p, q-1);
+        quick_sort(A, q+1, r);
+

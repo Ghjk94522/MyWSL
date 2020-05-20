@@ -1,0 +1,12 @@
+def k_subgraph(G, k):
+    Initialize queNode to empty;
+    for each node v in G do:
+        if v.degree < k then:
+            queNode.ENQUEUE(v);
+    while queNode != empty do:
+        v := queNode.DEQUEUE();
+        for each neighbour w of v do:
+            delete edge wv on node w;
+            if w.degree < k and w is not in queNode then:
+                queNode.ENQUEUE(w);
+        delete node v from G;

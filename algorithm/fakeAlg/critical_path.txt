@@ -1,0 +1,15 @@
+def critical_path(v):
+    v.color := GRAY;
+    v.est := 0; v.CrtiDep := -1;
+    for each neighbour w of v do:
+        if w.color = WHITE then:
+            critical_path(w);
+            if w.eft >= v.est then:
+                v.est := w.eft;
+                v.CrtiDep := w;
+        else
+            if w.eft >= v.est then:
+                v.est := w.eft;
+                v.CrtiDep := w;
+    v.eft := v.est + v.l;
+    v.color := BLACK;

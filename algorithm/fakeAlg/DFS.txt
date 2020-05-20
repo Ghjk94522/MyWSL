@@ -1,3 +1,4 @@
+// Undirected graph
 def DFS(v, parent):
     v..color := GRAY;
     <Preorder processing of node v>;
@@ -10,3 +11,25 @@ def DFS(v, parent):
             <Check BE vw>;
     <Postorder processing of node v>;
     v.color := BLACK;
+
+
+// Directed graph
+def DFS_wrapper(G):
+    Color all nodes to WHITE;
+    for each node v in G do:
+        if v.color = WHITE then:
+            DFS(v);
+
+def DFS(v):
+    v.color = GRAY;
+    <Preorder processing of node v>
+    for each neighbour w of v do:
+        if w.color = WHITE then:
+            <Exploratory processing of edge vw>;
+            DFS(w);
+            <Backtrack processing of edge vw>;
+        else
+            <Checking edge vw>;
+    <Postorder processing of node v>;
+    v.color := BLACK;
+
