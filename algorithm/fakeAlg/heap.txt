@@ -1,0 +1,22 @@
+def fix_heap(A, p):
+    l := Left(p); r := Right(p);
+    next := p;
+    if l <= heapSize and A[l] > A[p] then:
+        next := l;
+    if r <= heapSize and A[r] > A[next] then:
+        next := r;
+    if next != p then:
+        swap(A[p], A[next]);
+        fix_heap(A, next);
+
+def construct_heap(A[1..n]):
+    heapSize := n;
+    BUILD(A[1]);
+    subroutine BUILD(p) begin:
+        l := LEFT(p); r := RIGHT(p);
+        if l <= heapSize then:
+            BUILD(l);
+        if r <= heapSize then:
+            BUILD(r);
+        fix_heap(A, p);
+

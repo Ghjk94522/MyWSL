@@ -1,0 +1,7 @@
+def dag_sssp(S, G = (V, E)):
+    for each node v in G do:
+        v.dis := +infinite
+    S.dis := 0;
+    Get the topological order of every node;
+    for each v != S in topoloigical order do:
+        v.dis := min{u.dis + uv.weight}; all uv in E 

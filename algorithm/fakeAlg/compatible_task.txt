@@ -1,0 +1,8 @@
+def compatible_task(A):
+    Sort all tasks A = {a_i | 1 <= i <= n} according to f_i(1 <= i <= n);
+    Compatible := {};
+    while A != empty do:
+        Select the first task a in A;
+        Delete a and all tasks which conflict with a from A;
+        Compatible := Compatible or {a};
+    return Compatible;

@@ -1,0 +1,8 @@
+def huffman_encoding{a_1, a_2, .. , a_n}:
+    Build a priority queue queSymbol with a_1, a_2, .. , a_n;
+    for k = n+1 to 2n-1 do:
+        i := queSymbol.EXTRACT_MIN();
+        j := queSymbol.EXTRACT_MIN();
+        creat a node a_k, with children a_i, a_j;
+        f(a_k) := f(a_i) + f(a_j);
+        queSymbol.INSERT(a_k, f(a_k));

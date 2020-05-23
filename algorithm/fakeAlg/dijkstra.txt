@@ -1,0 +1,23 @@
+def dijkstra(G, s):
+    Initialize all vertices as UNSEEN;
+    Initialize queNode as empty;
+    s.dis := 0;
+    for each neighbour w of s do:
+        w.pathEdge := sw;
+        queNode.INSERT(w, sw.weight);
+    while queNode != empty do:
+        x := queNode.EXTRACT_MIN();
+        x.dis := x.priority;
+        Classify s.pathEdge as SHORTEST_PATH_EDGE;
+        UPDATE_FRINGE(x, queNode);
+
+subroutine UPDATE_FRINGE(v, queNode) begin:
+    for each neighbour w of v do:
+        newPriority := v.priority + vw.weight;
+        if w is UNSEEN then:
+            w.pathEdge := vw;
+            queNode.INSERT(w, newPriority);
+        elif newPriority < w.priority then:
+            w.pathEdge := vw;
+            queNode.decreaseKey(w, newPriority);
+

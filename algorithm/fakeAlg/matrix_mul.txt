@@ -1,0 +1,41 @@
+def matrix_mul_bf(D):
+    if D.length <= 2 then:
+        return 0;
+    multiCost := +infinite;
+    for i := 1 to D.length-1 do:
+        cost_1 := cost of multiplication at position i;
+        newList := D with the i_th element deleted;
+        cost_i := matrix_mul_bf(newList);
+        multiCost := min{multiCost, cost_1 + cost_2};
+    return multiCost;
+
+def matrix_mul_bf2(low, high):
+    if high - low = 1 then:
+        return 0;
+    multiCost := +infinite;
+    for k := low+1 to high-1 do:
+        cost_1 := matrix_mul_bf2(low, k);
+        cost_2 := matrix_mul_bf2(k, high);
+        cost_3 := cost of multiplication at position k;
+        multiCost := min{multiCost, cost_1+cost_2+cost_3};
+    return multiCost;
+
+def matrix_mul_dp(DimeList[0..n]):
+    for low := n-1 down to 1 do:
+        for high := low+1 to n do:
+            if high-low = 1 then:
+                bestCost := 0;
+                bestLast := -1;
+            else:
+                bestCost := +infinite;
+            for k := low+1 to high-1 do:
+                a := cost[low][k];
+                b := cost[k][high];
+                c := multiCost(DimeList[low], DimeList[k], DimeList[high]);
+                if a+b+c < bestCost then:
+                    bestCost := a+b+c;
+                    bestLast := k;
+            cost[low][high] := bestCost;
+            last[low][high] := bestLast;
+    EXTRACT_ORDER();
+    return cost[0][n];

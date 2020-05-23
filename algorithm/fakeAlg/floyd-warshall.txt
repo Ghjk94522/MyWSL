@@ -1,0 +1,7 @@
+def floyd_warshall(W):
+    D(0) := W;
+    for k := 1 to n do:
+        for i := 1 to n do:
+            for j := 1 to n do:
+                D_u(k) := min{D_u(k-1), D_ik(k-1) + D_kj(k-1)};
+    return D(n);

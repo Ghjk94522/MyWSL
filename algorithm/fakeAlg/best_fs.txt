@@ -1,0 +1,13 @@
+def best_first_search():
+    Initialize the priority queue Fringe as empty;
+    Insert some node v to Fringe;
+    while Fringe != empty do:
+        v := Fringe.EXTRACT_MIN();
+        <process v>
+        UPDATE_FRINGE(v, Fringe);
+
+subroutine UPDATE_FRINGE(v, Fringe) begin:
+    for each neighbour w of v which is Fresh do:
+        Set the priority of w, insert w to Fringe;
+    for each neighbour w of v which is Fringe do:
+        update the priority of w in Fringe, if necessary;

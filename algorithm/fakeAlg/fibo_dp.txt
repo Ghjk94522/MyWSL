@@ -1,0 +1,9 @@
+def fibo_dp(k):
+    if k <= 1 then:
+        return k;
+    if Fibo[k-1] = NULL then:
+        Fibo[k-1] := fibo_dp(k-1);
+    if Fibo[k-2] = NULL then:
+        Fibo[k-2] := fibo_dp(k-2);
+    Fibo[k] := Fibo[k-1] + Fibo[k-2];
+    return Fibo[k];

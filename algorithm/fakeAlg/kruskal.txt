@@ -1,0 +1,10 @@
+Build a priority queue queEdge of edges in G, prioritized by the edge weights;
+Initialize a disjoint set of nodes of G, with each node in its own set;
+Initialize the minimum spanning tree MST to {};
+while queEdge != empty do:
+    vw := queEdge.EXTRACT_MIN();
+    if FIND(v) != FIND(w) then:
+        MST := MST or {vw};
+        if MST.size = n-1 then:
+            return;
+        UNION(v, w);

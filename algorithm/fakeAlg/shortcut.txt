@@ -1,0 +1,9 @@
+def shortcut(A):
+    R := A;
+    for i := 1 to n do:
+        R_n := TRUE;
+    while R changed in the previous round of loop do:
+        for i := 1 to n do:
+            for j := 1 to n do:
+                for k := 1 to n do:
+                    R_u := R_u or (R_ik and R_kj);

@@ -1,0 +1,11 @@
+def binary_search(A[first..last], key):
+    if last < first then:
+        return -1;
+    int mid := (first + last) / 2;
+    if key = A[mid] then:
+        index := mid;
+    elif key < A[mid] then:
+        index := binary_search(A[first..mid-1], key);
+    else 
+        index := binary_search(A[mid+1..last], key);
+    return index;
