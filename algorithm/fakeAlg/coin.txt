@@ -1,0 +1,10 @@
+def coin_changing(d_1, d_2, .. , d_n, N):
+    for i := 0 to n do:
+        coin[i, 0] := 0;
+    for j := 0 to N do:
+        coin[0, j] := 0;
+        coin[1, j] := j;
+    for i := 2 to n do:
+        for j := 1 to N do:
+            coin[i, j] := min{coin[i-1, j], coin[i, j-d_i]+1};
+    return coin[n, N];

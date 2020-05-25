@@ -1,0 +1,11 @@
+def edit_dis(A[1..n], B[1..n]):
+    for i := 1 to m do EditDis[i, 0] := i;
+    for j := 1 to n do EditDis[0, j] := j;
+    for i := 1 to m do:
+        for j := 1 to n do:
+            EditDis[i, j] := min{EditDis[i-1, j]+1, EditDis[i, j-1]+1};
+            if A[i] = B[j] then:
+                EditDis[i, j] := min{EditDis[i, j], EditDis[i-1, j-1]};
+            else:
+                EditDis[i, j] := min{EditDis[i, j], EditDis[i-1, j-1]+1};
+    return EditDis[m, n];

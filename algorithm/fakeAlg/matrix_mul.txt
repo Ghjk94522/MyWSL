@@ -39,3 +39,14 @@ def matrix_mul_dp(DimeList[0..n]):
             last[low][high] := bestLast;
     EXTRACT_ORDER();
     return cost[0][n];
+
+def EXTRACT_ORDER():
+    Initialize the queue queMultOrder to store the multiplication order;
+    EXTRACT(0, n);
+subroutine EXTRACT(low, high):
+    if high-low > 1 then:
+        k := last[low][high];
+        EXTRACT(low, k);
+        EXTRACT(k, high);
+        queMultOrder.push(k);
+
