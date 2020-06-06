@@ -12,8 +12,8 @@ homework_test: ./advanced_pog/homework/Lc/H2.cpp ./g++result.txt
 	g++ ./advanced_pog/homework/Lc/H2.cpp -g -o ./test 2> g++result.txt
 	./test 
 
-oj_al_test: ./algorithm/L4_2.cpp ./data.in
-	g++ ./algorithm/L5_1.cpp -g -o ./test 2> g++result.txt
+oj_al_test: ./algorithm/L6_1.cpp ./data.in
+	g++ ./algorithm/L6_1.cpp -g -o ./test 2> g++result.txt
 	./test < data.in > data.out
 
 oj_al_py: ./algorithm/L2_2.py ./data.in
@@ -27,6 +27,6 @@ kick_start: ./Kick_Start/Allocation.cpp ./data.in
 	g++ ./Kick_Start/Allocation.cpp -std=c++14 -g -o ./test
 	./test < ./data.in 
 
-luogu_test: ./Oj_luogu/P3817.cpp
-	g++ ./Oj_luogu/P3817.cpp -g -o ./test 2> g++result.txt
+luogu_test: ./Oj_luogu/P2392.cpp
+	g++ ./Oj_luogu/P2392.cpp -g -o ./test 2> g++result.txt
 	./test < data.in > data.out
