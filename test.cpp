@@ -43,9 +43,7 @@ bool cmp(int a, int b){
 }
 
 int main(){
-    vector<int> a;
-    for(int i = 0; i < 10; i++) a.push_back(i);
-    sort(a.begin(), a.end(), cmp);
-    for(int i = 0; i < 10; i++) cout << a[i] << endl;
+    string s = "hello";
+    cout << s.substr(1, s.length()) << endl;
     return 0;
 }
