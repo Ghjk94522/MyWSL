@@ -6,8 +6,8 @@ using namespace std;
 
 class AdjListNode
 {
-    int v;
-    int weight;
+    int v; // the neighbour
+    int weight; 
 
 public:
     AdjListNode(int V, int w)
@@ -21,7 +21,7 @@ public:
 
 class Graph
 {
-    int v;
+    int v; // the num of nodes
     list<AdjListNode> *adj;
     void topologicalSortUtill(int v, bool visited[], stack<int> &Stack);
 
@@ -61,7 +61,7 @@ void Graph::longestPath(int s)
     stack<int> Stack;
     int dist[v];
     bool *visited = new bool[v];
-    for (int i = 0l; i < v; i++)
+    for (int i = 0; i < v; i++)
         visited[i] = false;
     for (int i = 0; i < v; i++)
     {
@@ -85,17 +85,17 @@ void Graph::longestPath(int s)
             }
         }
     }
-    for (int i = 0; i < v; i++)
-        dist[i] == NINF ? cout << "INF " : cout << dist[i] << " ";
+    for (int i = 1; i < v; i++)
+        printf("%d ", dist[i]);
 }
 
 int main()
 {
-    int n; cin >> n;
+    int n;
+    cin >> n;
     Graph g(n);
-    for(int i = 0; i < n; i++){
-        int x, y, z;
-        cin >> x >> y >> z;
+    int x, y, z;
+    while(3 == scanf("%d %d %d", &x, &y, &z)){
         g.addEdge(x, y, z);
     }
     g.longestPath(0);
