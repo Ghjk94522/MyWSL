@@ -1,8 +1,13 @@
-#include <bits/stdc++.h>
-#include <limits.h>
+#include<list>
+#include<stack>
+#include<limits.h>
+#include<stdio.h>
 using namespace std;
 
-#define NINF INT_MIN
+// #define -0x3f3f3f3f INT_MIN
+
+// The new version will try a large static array
+// replace the dynamic new array
 
 class AdjListNode
 {
@@ -22,7 +27,7 @@ public:
 class Graph
 {
     int v; // the num of nodes
-    list<AdjListNode> *adj;
+    list<AdjListNode> adj[100000];
     void topologicalSortUtill(int v, bool visited[], stack<int> &Stack);
 
 public:
@@ -34,7 +39,6 @@ public:
 Graph::Graph(int v)
 {
     this->v = v;
-    adj = new list<AdjListNode>[v];
 }
 
 void Graph::addEdge(int u, int v, int weight)
@@ -69,14 +73,14 @@ void Graph::longestPath(int s)
             topologicalSortUtill(i, visited, Stack);
     }
     for (int i = 0; i < v; i++)
-        dist[i] = NINF;
+        dist[i] = -0x3f3f3f3f;
     dist[s] = 0;
     while (Stack.empty() == false)
     {
         int u = Stack.top();
         Stack.pop();
         list<AdjListNode>::iterator i;
-        if (dist[u] != NINF)
+        if (dist[u] != -0x3f3f3f3f)
         {
             for (i = adj[u].begin(); i != adj[u].end(); i++)
             {
@@ -92,7 +96,7 @@ void Graph::longestPath(int s)
 int main()
 {
     int n;
-    cin >> n;
+    scanf("%d", &n);
     Graph g(n);
     int x, y, z;
     while(3 == scanf("%d %d %d", &x, &y, &z)){

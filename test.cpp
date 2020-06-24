@@ -43,7 +43,7 @@ bool cmp(int a, int b){
 }
 
 int main(){
-    string s = "hello";
-    cout << s.substr(1, s.length()) << endl;
+    string s；
+    cout << typeof(getline(cin, s)) << endl;
     return 0;
 }
