@@ -12,6 +12,10 @@
     @ Lasted edited on : 2020-7-7   21:04
 
     @ About : OBJECT-PYTHON
+                - class and inheritance
+                - public and private property
+                - methods
+                - __slots__
 '''
 
 class Student(object):
