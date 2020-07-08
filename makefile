@@ -27,11 +27,6 @@ kick_start: ./Kick_Start/Allocation.cpp ./data.in
 	g++ ./Kick_Start/Allocation.cpp -std=c++14 -g -o ./test
 	./test < ./data.in 
 
-<<<<<<< HEAD
-luogu_test: ./Oj_luogu/P1923.cpp ./data.in
-	g++ ./Oj_luogu/P1923.cpp -g -o ./test 2> g++result.txt
-=======
 luogu_test: ./Oj_luogu/P1093.cpp ./data.in
 	g++ ./Oj_luogu/P1093.cpp -g -o ./test 2> g++result.txt
->>>>>>> a7601522eefa485e87169339d7822cadeac93e31
 	./test < data.in > data.out

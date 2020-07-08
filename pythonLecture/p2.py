@@ -9,7 +9,7 @@
 
     @ Created on : 2020-7-7   22:19
 
-    @ Lasted edited on : 2020-7-8   10:35
+    @ Lasted edited on : 2020-7-8   16:14
 
     @ About : advanced content of OBJECT-PYTHON
                 - @property
@@ -17,6 +17,9 @@
                 - special methods
                     * __str__
                     * __iter__
+                    * __getitem__
+                    * __getattr__
+                    * __call__
 
 
 '''
@@ -28,10 +31,9 @@
 # @property
 # @special methods
 #    * __str__
+#    * __getattr__
+#    * __call__
 class Student(object):
-
-    # def __init__(self, score):
-    #     self._score = score
 
     @property
     def score(self):
@@ -72,6 +74,21 @@ class Student(object):
     而__repr__()返回程序开发者看到的字符串，也就是说，__repr__()是为调试服务的。
     '''
 
+    def __getattr__(self, attr):
+        if attr == 'id':
+            print("id has not been set")
+        elif attr == 'twice':
+            return lambda x : x * x
+        raise AttributeError('\'Student\' object has no attribute \' %s \'' % attr)
+    '''
+    注意，只有在没有找到属性的情况下，才调用__getattr__，已有的属性，比如name，不会在__getattr__中查找。
+    此外，注意到任意调用如s.abc都会返回None，这是因为我们定义的__getattr__默认返回就是None。
+    要让class只响应特定的几个属性，我们就要按照约定，抛出AttributeError的错误
+    '''
+
+    def __call__(self):
+        print('My name is {}'.format(self.name))
+
 
 # @mul inheritance
 class Animal(object):
@@ -99,6 +116,7 @@ class Bat(Mammal, Flyable):
 
 # @special methods
 #    * __iter__
+#    * __getitem__
 class Fib(object):
     def __init__(self):
         self.a, self.b = 0, 1
@@ -111,6 +129,25 @@ class Fib(object):
         if self.a > 100000:
             raise StopIteration()
         return self.a
+
+    def __getitem__(self, i):
+        if isinstance(i, int):
+            a, b = 1, 1
+            for x in range(i):
+                a, b = b, a+b
+            return a
+        elif isinstance(i, slice):
+            start = i.start
+            stop = i.stop
+            if start is None:
+                start = 0
+            a, b = 1, 1
+            L = []
+            for x in range(stop):
+                if x >= start:
+                    L.append(a)
+                a, b = b, a+b
+            return L
 
 
 
@@ -155,3 +192,8 @@ if __name__ == "__main__":
     46368
     75025
     '''
+    f = Fib()
+    print(f[100])
+    print(f[1: 5])
+    s.twice(14)
+    s()
