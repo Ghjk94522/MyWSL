@@ -39,7 +39,7 @@ class Day(Enum):
 # use type() to define a class
 def fn(self, name='world'):
     print('Hello {}'.format(name))
-# pay attention to the tuple of object which has only a element
+# pay attention to the tuple of object which has only one element
 HellO = type('Hello', (object, ), dict(hello=fn))
 
 
