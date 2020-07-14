@@ -9,13 +9,14 @@
 
     @ Created on : 2020-7-10   16:48
 
-    @ Lasted edited on : 2020-7-11   17:20
+    @ Lasted edited on : 2020-7-13   13：18
 
     @ About : process and thread
                 - fork
                 - Process
                 - Pool
                 - subprocess
+                - communicate between processes
 
 
 '''
@@ -28,7 +29,7 @@ import os
 如果使用Linux系统那么可以直接使用os库来调用fork()函数，
 但是win系统不支持fork函数，所以可以使用跨平台库multiprocessing
 '''
-from multiprocessing import Process
+from multiprocessing import Process, Queue
 import time
 import random
 from multiprocessing import Pool
@@ -68,6 +69,7 @@ def long_time_task(name):
 
 def pool_test():
     print('Parent process {}'.format(os.getpid()))
+    # the default pool args is equal to the num of cores of the cpu
     p = Pool()
     for i in range(5):
         p.apply_async(long_time_task, args=(i, ))
@@ -93,6 +95,28 @@ def subprocess_test():
     # r = subprocess.call(['nslookup', 'www.python.org'])
     # print('Exit code : ', r)
 
+def write(q):
+    print("Process to write {}".format(os.getpid()))
+    for value in ['A', 'B', 'C']:
+        print('Put {} to queue.'.format(value))
+        q.put(value)
+        time.sleep(random.random())
+
+def read(q):
+    print('Process to read {}'.format(os.getpid()))
+    while True:
+        value = q.get(True)
+        print('Get {} from queue'.format(value))
+
+def commute_test():
+    q = Queue()
+    pw = Process(target=write, args=(q, ))
+    pr = Process(target=read, args=(q, ))
+    pw.start()
+    pr.start()
+    pw.join()
+    pr.terminate()
+
 
 if __name__=='__main__':
-    subprocess_test()
+    pool_test()
