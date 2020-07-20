@@ -71,6 +71,8 @@ __new__()方法接收到的参数依次是：
 matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 flat = [x for row in matrix for x in row]
 # flat = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+square = [[x ** 2 for x in row] for row in matrix]
+# square = [[1, 4, 9], [16, 25, 36], [49, 64, 81]]
 
 
 
