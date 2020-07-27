@@ -42,8 +42,19 @@ bool cmp(int a, int b){
     return a > b;
 }
 
+#define Log(format, ...) \
+    _Log("\33[1;34m[%s,%d,%s] " format "\33[0m\n", \
+        __FILE__, __LINE__, __func__, ## __VA_ARGS__)
+
 int main(){
-    int c = 3 * 1.6;
-    cout << c << endl;
+    char *arg = "0x1010";
+    arg += 2;
+    printf("%s\n", arg);
+    char s[100];
+    for(int i = 0; i < 4; i++){
+	s[i] = *arg;
+	arg++;
+    }
+    printf("%s\n", s);
     return 0;
 }
