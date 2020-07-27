@@ -14,6 +14,7 @@
     @ About : lamda function in PYTHON
               enum class
               meta class
+              list comprehension
 '''
 
 # 书签 ： 元类 metaclass : https://www.liaoxuefeng.com/wiki/1016959663602400/1017592449371072
@@ -66,6 +67,12 @@ __new__()方法接收到的参数依次是：
 类继承的父类集合；
 类的方法集合。
 '''
+
+matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+flat = [x for row in matrix for x in row]
+# flat = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+square = [[x ** 2 for x in row] for row in matrix]
+# square = [[1, 4, 9], [16, 25, 36], [49, 64, 81]]
 
 
 
