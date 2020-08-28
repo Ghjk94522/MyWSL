@@ -1,5 +1,4 @@
 #include<bits/stdc++.h>
-#define NDEBUG
 using namespace std;
 
 class test{
@@ -47,14 +46,10 @@ bool cmp(int a, int b){
         __FILE__, __LINE__, __func__, ## __VA_ARGS__)
 
 int main(){
-    char *arg = "0x1010";
-    arg += 2;
-    printf("%s\n", arg);
-    char s[100];
-    for(int i = 0; i < 4; i++){
-	s[i] = *arg;
-	arg++;
-    }
-    printf("%s\n", s);
+	int a[] = {10, 23, 2, 5, 999};
+	assert(0);
+	for(int i = 0; i < 5; i++) cout << a[i] << endl;
+	sort(a, a+5);
+	for(int i = 0; i < 5; i++) cout << a[i] << endl;
     return 0;
 }
