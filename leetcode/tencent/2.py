@@ -1,3 +1,7 @@
+'''
+给定两个有序数组，找出他们合并后的中位数
+'''
+
 from typing import List
 
 ''' 
