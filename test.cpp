@@ -47,14 +47,7 @@ bool cmp(int a, int b){
         __FILE__, __LINE__, __func__, ## __VA_ARGS__)
 
 int main(){
-    char *arg = "0x1010";
-    arg += 2;
-    printf("%s\n", arg);
-    char s[100];
-    for(int i = 0; i < 4; i++){
-	s[i] = *arg;
-	arg++;
-    }
-    printf("%s\n", s);
+    unsigned res = 1 - 2;
+    printf("%d, %%u\n", res, res);
     return 0;
 }
