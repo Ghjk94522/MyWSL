@@ -11,20 +11,19 @@ class Solution:
         ans = ""
         for i in range(n):
             for j in range(n):
-                l = j + 1
-                if l >= len(s):
+                k = j + i
+                if k >= len(s):
                     break
                 if i == 0:
-                    dp[j][l] = True
+                    dp[j][k] = True
                 elif i == 1:
-                    dp[j][l] = (s[j] == s[l])
+                    dp[j][k] = (s[j] == s[k])
                 else:
-                    dp[j][l] = (dp[j+1][l-1] and s[j] == s[l])
-                if dp[j][l] = and i + 1 > len(ans):
-                    ans = s[i:j+1]
+                    dp[j][k] = (dp[j+1][k-1] and s[j] == s[k])
+                if dp[j][k] and i + 1 > len(ans):
+                    ans = s[j:k+1]
         return ans
 
-    def
     
     # Manacher
     def expand(self, s, left, right):
@@ -54,3 +53,29 @@ class Solution:
                 start = i - cur_arm_len
                 end = i + cur_arm_len
         return s[start+1 : end+1 : 2]
+
+    # the fastest method in answer of the leetcode
+    def longestPalindrome_best(self, s: str) -> str:
+        if not s:
+            return ""
+        length = len(s)
+        if length == 1 or s == s[::-1]:
+            return s 
+        max_len, start = 1, 0
+        for i in range(1, length):
+            even = s[i-max_len : i+1]
+            odd = s[i-max_len-1 : i+1]
+            if i - max_len >= 0 and even == even[::-1]:
+                start = i - max_len
+                max_len = max_len + 1
+            if i - max_len - 1 >= 0 and odd == odd[::-1]:
+                start = i - max_len - 1
+                max_len += 2
+        return s[start : start + max_len]
+
+
+
+if __name__ == '__main__':
+    s = Solution()
+    ans = s.longestPalindrome_dp("asssb")
+    print(ans)
