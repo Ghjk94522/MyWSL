@@ -56,6 +56,9 @@ class Solution:
 
     # the fastest method in answer of the leetcode
     def longestPalindrome_best(self, s: str) -> str:
+        '''
+        still need to be read and i don't understand the method
+        '''
         if not s:
             return ""
         length = len(s)
@@ -77,5 +80,5 @@ class Solution:
 
 if __name__ == '__main__':
     s = Solution()
-    ans = s.longestPalindrome_dp("asssb")
+    ans = s.longestPalindrome_best("asb")
     print(ans)
