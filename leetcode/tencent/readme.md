@@ -1,5 +1,7 @@
 这个目录是来自leetcode的腾讯习题集，练习有自己的算法，也有题解中的算法，还有评论区中偶然看到的大佬的解
 
+题目目录：https://leetcode-cn.com/leetbook/read/tencent/
+
 记录一下题目梗概，以便后面复习
 
     - 1：   
