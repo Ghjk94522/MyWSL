@@ -53,7 +53,7 @@ class Solution:
             dfs(root.right, total)
             path.pop()
 
-        dfs(root, total)
+        dfs(root, sum)
         return ret
 
 # bfs
