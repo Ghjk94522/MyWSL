@@ -20,6 +20,7 @@ void *do_nothing(void *null)
 int main(int argc, char *argv[])
 {
     int rc, i, j, detachstate;
+	printf("The program starts here.\n");
     time_t start_time = clock();
     pthread_t tid;
     pthread_attr_t attr;
@@ -52,6 +53,7 @@ int main(int argc, char *argv[])
 
     float runTimePthread = (float)(end_time-start_time)/CLOCKS_PER_SEC;
     printf("The threads run time is %f\n", runTimePthread);
+	printf("The program ends here.\n");
 
     return 0;
 }
